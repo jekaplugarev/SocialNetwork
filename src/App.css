@@ -1,0 +1,26 @@
+body {
+    background-color: rgb(233, 236, 241);
+    margin-right: calc(-1 * (100vw - 100%))
+}
+.container {
+
+}
+.app-wrapper {
+    max-width: 1000px;
+    min-height: calc(100vh - 70px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 3fr 12fr;
+    grid-gap: 10px;
+    grid-template-areas: "n c";
+}
+
+.app-wrapper-content {
+    border-radius: 5px;
+    grid-area: c;
+    background-color: white;
+}
+
+.app-wrapper-content img {
+    width: 100%;
+}

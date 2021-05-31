@@ -1,0 +1,48 @@
+.postsBlock {
+    margin: 10px;
+    margin-left: 20px;
+}
+.posts {
+    padding-top: 10px;
+    margin: 0 10px 10px 0;
+}
+
+.postBtn {
+    min-width: 100px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: deepskyblue;
+    outline: none;
+    border: 1px solid deepskyblue;
+    color: white;
+    border-radius: 5px;
+    align-self: start;
+}
+
+.postBtn:hover {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid deepskyblue;
+    color: #3b3b3b;
+}
+
+.enterPost {
+    display: flex;
+}
+
+.postField {
+    margin: 10px;
+    margin-left: 0;
+    outline: none;
+    resize: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 10px;
+    display: flex;
+    width: calc(100% - 50px);
+    overflow: hidden;
+    border-color: #bebebe;
+
+}

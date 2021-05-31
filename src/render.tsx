@@ -1,0 +1,9 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import {BrowserRouter} from 'react-router-dom';
+import {addMessage, addPost, RootStateType, updateNewMessageText, updateNewPostText} from './state';
+
+
+
