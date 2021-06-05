@@ -1,8 +1,8 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import state, {addMessage, addPost, subscribe, updateNewMessageText, updateNewPostText} from './state';
+import {store} from './state';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, HashRouter} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 import App from './App';
 import React from 'react';
 
@@ -11,19 +11,16 @@ const renderTree = () => {
         <HashRouter>
             <App
                 state={state}
-                addPost={addPost}
-                addMessage={addMessage}
-                updateNewPostText={updateNewPostText}
-                updateNewMessageText={updateNewMessageText}
+                dispatch={store.dispatch.bind(store)}
             />
         </HashRouter>,
         document.getElementById('root')
-    );
+    )
 }
 
 renderTree()
 
-subscribe(renderTree)
+store.subscribe(renderTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

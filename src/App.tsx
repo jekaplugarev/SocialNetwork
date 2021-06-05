@@ -8,14 +8,15 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import state, {RootStateType} from './state';
+import {store, RootStateType, ActionType} from './state';
 
 export type AppType = {
-    state: RootStateType
+    _state: RootStateType
     addPost: () => void
     addMessage: () => void
     updateNewPostText: (newText: string) => void
     updateNewMessageText: (newText: string) => void
+    dispatch: (action: ActionType) => void
 }
 
 const App: React.FC<AppType> = (props) => {
@@ -28,6 +29,7 @@ const App: React.FC<AppType> = (props) => {
                     <Switch>
                         <Route path="/" exact render={() => <Redirect to="/profile"/>}/>
                         <Route path="/dialogs" render={() => <Dialogs
+
                             dialogsData={state.dialogsPage.dialogsData}
                             messagesData={state.dialogsPage.messagesData}
                             addMessage={props.addMessage}
@@ -35,6 +37,8 @@ const App: React.FC<AppType> = (props) => {
                             newMessageText={props.state.dialogsPage.newMessageText}
                         />}/>
                         <Route path="/profile" render={() => <Profile
+                            dispatch={props.dispatch}
+
                             postsData={state.profilePage.postsData}
                             addPost={props.addPost}
                             newPostText={props.state.profilePage.newPostText}

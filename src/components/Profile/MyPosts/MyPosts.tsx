@@ -1,5 +1,5 @@
 import React, {LegacyRef} from 'react';
-import {PostsType} from '../../../state';
+import {ActionType, addPostActionCreator, PostsType, updateNewPostTextActionCreator} from '../../../state';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
@@ -8,6 +8,7 @@ export type MyPostsType = {
     addPost: () => void
     newPostText: string
     updateNewPostText: (newText: string) => void
+    dispatch: (action: ActionType) => void
 }
 
 const MyPosts: React.FC<MyPostsType> = (props) => {
@@ -18,13 +19,13 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
     const newPostElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
 
     const addPost = () => {
-        props.addPost()
+        props.dispatch(addPostActionCreator())
     }
 
     const onPostChange = () => {
         if (newPostElement.current !== null) {
             const textPost = newPostElement.current.value
-            props.updateNewPostText(textPost)
+            props.dispatch(updateNewPostTextActionCreator(textPost))
         }
     }
 
