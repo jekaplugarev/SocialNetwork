@@ -1,31 +1,31 @@
 import React, {LegacyRef} from 'react';
-import {ActionType, addPostActionCreator, PostsType, updateNewPostTextActionCreator} from '../../../state';
+import {addPostCreator, updateNewPostTextCreator} from '../../../redux/profile-reducer';
+import {PostsType, StoreType} from '../../../redux/state';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
 export type MyPostsType = {
-    postsData: Array<PostsType>
-    addPost: () => void
     newPostText: string
-    updateNewPostText: (newText: string) => void
-    dispatch: (action: ActionType) => void
+    store: StoreType
 }
 
 const MyPosts: React.FC<MyPostsType> = (props) => {
-    let postsElements = props.postsData.map((p: PostsType) => <div key={p.id}><Post message={p.message}
+    let state = props.store.getState().profilePage
+
+    let postsElements = state.postsData.map((p: PostsType) => <div key={p.id}><Post message={p.message}
                                                                                     likesCount={p.likesCount}
                                                                                     id={p.id}/></div>)
 
     const newPostElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
 
     const addPost = () => {
-        props.dispatch(addPostActionCreator())
+        props.store.dispatch(addPostCreator())
     }
 
     const onPostChange = () => {
         if (newPostElement.current !== null) {
             const textPost = newPostElement.current.value
-            props.dispatch(updateNewPostTextActionCreator(textPost))
+            props.store.dispatch(updateNewPostTextCreator(textPost))
         }
     }
 

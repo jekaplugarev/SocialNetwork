@@ -2,31 +2,34 @@ import React, {LegacyRef} from 'react'
 import style from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import {DialogsType, MessagesType} from '../../state';
+import {
+    DialogsType,
+    MessagesType, StoreType,
+} from '../../redux/state';
+import {addMessageCreator, updateNewMessageTextCreator} from '../../redux/dialogs-reducer';
 
 export type DialogsPageType = {
-    dialogsData: Array<DialogsType>
-    messagesData: Array<MessagesType>
-    addMessage: () => void
-    updateNewMessageText: (newText: string) => void
+    store: StoreType
     newMessageText: string
 }
 
 const Dialogs: React.FC<DialogsPageType> = (props) => {
-    let dialogsElements = props.dialogsData.map((d: DialogsType) => <DialogItem name={d.name} id={d.id} img={d.img}/>)
+    let state = props.store.getState().dialogsPage
 
-    let messagesElements = props.messagesData.map((m: MessagesType) => <Message message={m.message} id={m.id}/>)
+    let dialogsElements = state.dialogsData.map((d: DialogsType) => <div key={d.id}><DialogItem name={d.name} id={d.id} img={d.img}/></div>)
+
+    let messagesElements = state.messagesData.map((m: MessagesType) => <div key={m.id}><Message message={m.message} id={m.id}/></div>)
 
     const newMessageElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
 
     const addMessage = () => {
-        props.addMessage()
+        props.store.dispatch(addMessageCreator())
     }
 
     const onMessageChange = () => {
         if (newMessageElement.current !== null) {
             const textMessage = newMessageElement.current.value
-            props.updateNewMessageText(textMessage)
+            props.store.dispatch(updateNewMessageTextCreator(textMessage))
         }
     }
 
@@ -46,7 +49,7 @@ const Dialogs: React.FC<DialogsPageType> = (props) => {
                             className={style.messageField}
                             value={props.newMessageText}
                             onChange={onMessageChange}
-                            placeholder={'Enter message...'}
+                            placeholder={'Enter your message...'}
                         />
                     <button
                         onClick={addMessage}

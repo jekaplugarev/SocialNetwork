@@ -8,18 +8,15 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {store, RootStateType, ActionType} from './state';
+import {store, StoreType} from './redux/state';
 
 export type AppType = {
-    _state: RootStateType
-    addPost: () => void
-    addMessage: () => void
-    updateNewPostText: (newText: string) => void
-    updateNewMessageText: (newText: string) => void
-    dispatch: (action: ActionType) => void
+    store: StoreType
 }
 
 const App: React.FC<AppType> = (props) => {
+    const state = store.getState()
+
     return (
         <div className="container">
             <Header/>
@@ -29,20 +26,12 @@ const App: React.FC<AppType> = (props) => {
                     <Switch>
                         <Route path="/" exact render={() => <Redirect to="/profile"/>}/>
                         <Route path="/dialogs" render={() => <Dialogs
-
-                            dialogsData={state.dialogsPage.dialogsData}
-                            messagesData={state.dialogsPage.messagesData}
-                            addMessage={props.addMessage}
-                            updateNewMessageText={props.updateNewMessageText}
-                            newMessageText={props.state.dialogsPage.newMessageText}
+                            store={props.store}
+                            newMessageText={state.dialogsPage.newMessageText}
                         />}/>
                         <Route path="/profile" render={() => <Profile
-                            dispatch={props.dispatch}
-
-                            postsData={state.profilePage.postsData}
-                            addPost={props.addPost}
-                            newPostText={props.state.profilePage.newPostText}
-                            updateNewPostText={props.updateNewPostText}
+                            store={props.store}
+                            newPostText={state.profilePage.newPostText}
                         />}/>
                         <Route path="/news" render={() => <News/>}/>
                         <Route path="/music" render={() => <Music/>}/>
