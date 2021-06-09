@@ -4,7 +4,7 @@ import {v1} from 'uuid';
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 
-export const dialogsReducer = (state: DialogsPageType, action: ActionsType) => {
+export const dialogsReducer = (state: DialogsPageType, action: ActionsType): DialogsPageType | void => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage: MessagesType = {

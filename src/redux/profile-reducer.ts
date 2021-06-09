@@ -4,7 +4,7 @@ import {ActionsType, PostsType, ProfilePageType} from './state';
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
-export const profileReducer = (state: ProfilePageType, action: ActionsType) => {
+export const profileReducer = (state: ProfilePageType, action: ActionsType): ProfilePageType | void => {
     switch (action.type) {
         case ADD_POST:
             let newPost: PostsType = {
