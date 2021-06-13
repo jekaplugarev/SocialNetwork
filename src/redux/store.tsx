@@ -1,6 +1,6 @@
-import {v1} from 'uuid'
 import {AddPostActionType, profileReducer, UpdateNewPostActionType} from './profile-reducer';
 import {AddMessageActionType, dialogsReducer, UpdateNewMessageActionType} from './dialogs-reducer';
+import { v1 } from 'uuid';
 
 export let store: StoreType = {
     _state: {

@@ -3,33 +3,41 @@ import style from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import {
-    DialogsType,
-    MessagesType, StoreType,
-} from '../../redux/state';
-import {addMessageCreator, updateNewMessageTextCreator} from '../../redux/dialogs-reducer';
+    DialogsDataType,
+    DialogsPageType,
+    DialogsType, MessagesDataType,
+    MessagesType
+} from '../../redux/store';
 
-export type DialogsPageType = {
-    store: StoreType
+
+export type DialogsContainerType = {
     newMessageText: string
+    updateNewMessageText: (textMessage: string) => void
+    sendMessage: () => void
+    dialogsPage: DialogsPageType
+    dialogs: DialogsDataType
+    messages: MessagesDataType
 }
 
-const Dialogs: React.FC<DialogsPageType> = (props) => {
-    let state = props.store.getState().dialogsPage
+export const Dialogs: React.FC<DialogsContainerType> = (props) => {
 
-    let dialogsElements = state.dialogsData.map((d: DialogsType) => <div key={d.id}><DialogItem name={d.name} id={d.id} img={d.img}/></div>)
 
-    let messagesElements = state.messagesData.map((m: MessagesType) => <div key={m.id}><Message message={m.message} id={m.id}/></div>)
+    let dialogsElements = props.dialogs.map((d: DialogsType) => <div key={d.id}><DialogItem name={d.name} id={d.id}
+                                                                                                img={d.img}/></div>)
+
+    let messagesElements = props.messages.map((m: MessagesType) => <div key={m.id}><Message message={m.message}
+                                                                                                id={m.id}/></div>)
 
     const newMessageElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
 
     const addMessage = () => {
-        props.store.dispatch(addMessageCreator())
+        props.sendMessage()
     }
 
     const onMessageChange = () => {
         if (newMessageElement.current !== null) {
             const textMessage = newMessageElement.current.value
-            props.store.dispatch(updateNewMessageTextCreator(textMessage))
+            props.updateNewMessageText(textMessage)
         }
     }
 
@@ -61,5 +69,3 @@ const Dialogs: React.FC<DialogsPageType> = (props) => {
         </div>
     )
 }
-
-export default Dialogs;

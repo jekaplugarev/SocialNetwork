@@ -2,21 +2,21 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
+import {Profile} from './components/Profile/Profile';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {store, StoreType} from './redux/state';
+import {RootStateType, StoreType} from './redux/store';
+import {DialogsContainer} from './components/Dialogs/DialogsContainer';
 
 export type AppType = {
     store: StoreType
+    state: RootStateType
+    dispatch: any
 }
 
-const App: React.FC<AppType> = (props) => {
-    const state = store.getState()
-
+export const App: React.FC<AppType> = (props) => {
     return (
         <div className="container">
             <Header/>
@@ -24,23 +24,19 @@ const App: React.FC<AppType> = (props) => {
                 <Navbar/>
                 <div className="app-wrapper-content">
                     <Switch>
-                        <Route path="/" exact render={() => <Redirect to="/profile"/>}/>
-                        <Route path="/dialogs" render={() => <Dialogs
-                            store={props.store}
-                            newMessageText={state.dialogsPage.newMessageText}
-                        />}/>
                         <Route path="/profile" render={() => <Profile
                             store={props.store}
-                            newPostText={state.profilePage.newPostText}
+                        />}/>
+                        <Route path="/dialogs" render={() => <DialogsContainer
+                            store={props.store}
                         />}/>
                         <Route path="/news" render={() => <News/>}/>
                         <Route path="/music" render={() => <Music/>}/>
                         <Route path="/settings" render={() => <Settings/>}/>
+                        <Redirect to="/profile"/>
                     </Switch>
                 </div>
             </div>
         </div>
     )
 }
-
-export default App

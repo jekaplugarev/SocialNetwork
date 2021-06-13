@@ -1,31 +1,30 @@
 import React, {LegacyRef} from 'react';
-import {addPostCreator, updateNewPostTextCreator} from '../../../redux/profile-reducer';
-import {PostsType, StoreType} from '../../../redux/state';
+import {PostsDataType, PostsType} from '../../../redux/store';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
 export type MyPostsType = {
     newPostText: string
-    store: StoreType
+    posts: PostsDataType
+    addPost: () => void
+    updateNewPostText: (textPost: string) => void
 }
 
-const MyPosts: React.FC<MyPostsType> = (props) => {
-    let state = props.store.getState().profilePage
-
-    let postsElements = state.postsData.map((p: PostsType) => <div key={p.id}><Post message={p.message}
-                                                                                    likesCount={p.likesCount}
-                                                                                    id={p.id}/></div>)
+export const MyPosts: React.FC<MyPostsType> = (props) => {
+    let postsElements = props.posts.map((p: PostsType) => <div key={p.id}><Post message={p.message}
+                                                                                likesCount={p.likesCount}
+                                                                                id={p.id}/></div>)
 
     const newPostElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
 
-    const addPost = () => {
-        props.store.dispatch(addPostCreator())
+    const onAddPost = () => {
+        props.addPost()
     }
 
     const onPostChange = () => {
         if (newPostElement.current !== null) {
             const textPost = newPostElement.current.value
-            props.store.dispatch(updateNewPostTextCreator(textPost))
+            props.updateNewPostText(textPost)
         }
     }
 
@@ -42,7 +41,7 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
                     placeholder={'Enter post...'}
                 />
                 <button
-                    onClick={addPost}
+                    onClick={onAddPost}
                     className={style.postBtn}>Add Post
                 </button>
             </div>
@@ -52,5 +51,3 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
         </div>
     )
 }
-
-export default MyPosts;
