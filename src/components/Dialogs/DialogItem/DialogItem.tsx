@@ -4,7 +4,7 @@ import style from './../Dialogs.module.css'
 import {DialogsType} from '../../../redux/dialogs-reducer';
 
 
-const DialogItem: React.FC<DialogsType> = (props) => {
+export const DialogItem: React.FC<DialogsType> = (props) => {
     return (
         <div className={style.dialog}>
             <NavLink to={'/dialogs/' + props.id} activeClassName={style.active}>
@@ -16,5 +16,3 @@ const DialogItem: React.FC<DialogsType> = (props) => {
         </div>
     )
 }
-
-export default DialogItem

@@ -1,16 +1,16 @@
 import React, {LegacyRef} from 'react'
 import style from './Dialogs.module.css'
-import DialogItem from './DialogItem/DialogItem';
-import Message from './Message/Message';
+import {DialogItem} from './DialogItem/DialogItem';
+import {Message} from './Message/Message';
 import {DialogsContainerPropsType} from './DialogsContainer';
 import {DialogsType, MessagesType} from '../../redux/dialogs-reducer';
 
 export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
-    let dialogsElements = props.dialogsPage.dialogsData.map((d: DialogsType) => <div key={d.id}><DialogItem name={d.name} id={d.id}
-                                                                                            img={d.img}/></div>)
+    let dialogsElements = props.dialogsPage.dialogsData.map((d: DialogsType) => <div key={d.id}>
+        <DialogItem name={d.name} id={d.id} img={d.img}/></div>)
 
-    let messagesElements = props.dialogsPage.messagesData.map((m: MessagesType) => <div key={m.id}><Message message={m.message}
-                                                                                            id={m.id}/></div>)
+    let messagesElements = props.dialogsPage.messagesData.map((m: MessagesType) => <div key={m.id}>
+        <Message message={m.message} id={m.id}/></div>)
 
     const newMessageElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
 
