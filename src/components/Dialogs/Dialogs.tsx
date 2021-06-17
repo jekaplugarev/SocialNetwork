@@ -3,30 +3,28 @@ import style from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import {
-    DialogsDataType,
-    DialogsPageType,
+    DialogsDataType, DialogsPageType,
     DialogsType, MessagesDataType,
     MessagesType
 } from '../../redux/store';
+import {DialogsContainerPropsType} from './DialogsContainer';
 
 
-export type DialogsContainerType = {
-    newMessageText: string
-    updateNewMessageText: (textMessage: string) => void
-    sendMessage: () => void
-    dialogsPage: DialogsPageType
-    dialogs: DialogsDataType
-    messages: MessagesDataType
-}
+// export type DialogsContainerType = {
+//     newMessageText: string
+//     updateNewMessageText: (textMessage: string) => void
+//     sendMessage: () => void
+//     dialogsPage: DialogsPageType
+//     // dialogs: DialogsDataType
+//     // messages: MessagesDataType
+// }
 
-export const Dialogs: React.FC<DialogsContainerType> = (props) => {
+export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
+    let dialogsElements = props.dialogsPage.dialogsData.map((d: DialogsType) => <div key={d.id}><DialogItem name={d.name} id={d.id}
+                                                                                            img={d.img}/></div>)
 
-
-    let dialogsElements = props.dialogs.map((d: DialogsType) => <div key={d.id}><DialogItem name={d.name} id={d.id}
-                                                                                                img={d.img}/></div>)
-
-    let messagesElements = props.messages.map((m: MessagesType) => <div key={m.id}><Message message={m.message}
-                                                                                                id={m.id}/></div>)
+    let messagesElements = props.dialogsPage.messagesData.map((m: MessagesType) => <div key={m.id}><Message message={m.message}
+                                                                                            id={m.id}/></div>)
 
     const newMessageElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
 
@@ -55,7 +53,7 @@ export const Dialogs: React.FC<DialogsContainerType> = (props) => {
                             ref={newMessageElement}
                             rows={1}
                             className={style.messageField}
-                            value={props.newMessageText}
+                            value={props.dialogsPage.newMessageText}
                             onChange={onMessageChange}
                             placeholder={'Enter your message...'}
                         />

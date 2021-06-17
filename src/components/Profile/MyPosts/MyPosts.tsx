@@ -1,17 +1,18 @@
 import React, {LegacyRef} from 'react';
-import {PostsDataType, PostsType} from '../../../redux/store';
+import {DialogsPageType, PostsDataType, PostsType, ProfilePageType} from '../../../redux/store';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
+import {MyPostsContainerPropsType} from './MyPostsContainer';
 
-export type MyPostsType = {
-    newPostText: string
-    posts: PostsDataType
-    addPost: () => void
-    updateNewPostText: (textPost: string) => void
-}
+// export type MyPostsType = {
+//     newPostText: string
+//     profilePage: ProfilePageType
+//     addPost: () => void
+//     updateNewPostText: (textPost: string) => void
+// }
 
-export const MyPosts: React.FC<MyPostsType> = (props) => {
-    let postsElements = props.posts.map((p: PostsType) => <div key={p.id}><Post message={p.message}
+export const MyPosts: React.FC<MyPostsContainerPropsType> = (props) => {
+    let postsElements = props.profilePage.postsData.map((p: PostsType) => <div key={p.id}><Post message={p.message}
                                                                                 likesCount={p.likesCount}
                                                                                 id={p.id}/></div>)
 
@@ -36,7 +37,7 @@ export const MyPosts: React.FC<MyPostsType> = (props) => {
                     ref={newPostElement}
                     rows={1}
                     className={style.postField}
-                    value={props.newPostText}
+                    value={props.profilePage.newPostText}
                     onChange={onPostChange}
                     placeholder={'Enter post...'}
                 />

@@ -1,7 +1,7 @@
 import {ActionsType, DialogsPageType, MessagesType} from './store';
 import {v1} from 'uuid';
 
-let initialState = {
+let initialState: DialogsPageType = {
     dialogsData: [
         {
             id: v1(),

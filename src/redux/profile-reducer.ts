@@ -1,7 +1,7 @@
 import {v1} from 'uuid';
 import {ActionsType, PostsType, ProfilePageType} from './store';
 
-let initialState = {
+let initialState: ProfilePageType = {
     postsData: [
         {id: v1(), message: 'Hi, how are you?', likesCount: 12},
         {id: v1(), message: 'It\'s my first post', likesCount: 20}
