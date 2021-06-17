@@ -2,7 +2,7 @@
     width: 100%;
     height: 50px;
     grid-area: h;
-    background-color: white;
+    background-color: deepskyblue;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,7 +18,7 @@
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 0.2em;
-    color: #3b3b3b;
+    color: black;
 }
 .nav {
     display: flex;

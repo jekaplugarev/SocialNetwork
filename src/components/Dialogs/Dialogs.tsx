@@ -2,22 +2,8 @@ import React, {LegacyRef} from 'react'
 import style from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import {
-    DialogsDataType, DialogsPageType,
-    DialogsType, MessagesDataType,
-    MessagesType
-} from '../../redux/store';
 import {DialogsContainerPropsType} from './DialogsContainer';
-
-
-// export type DialogsContainerType = {
-//     newMessageText: string
-//     updateNewMessageText: (textMessage: string) => void
-//     sendMessage: () => void
-//     dialogsPage: DialogsPageType
-//     // dialogs: DialogsDataType
-//     // messages: MessagesDataType
-// }
+import {DialogsType, MessagesType} from '../../redux/dialogs-reducer';
 
 export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
     let dialogsElements = props.dialogsPage.dialogsData.map((d: DialogsType) => <div key={d.id}><DialogItem name={d.name} id={d.id}

@@ -1,5 +1,23 @@
 import {v1} from 'uuid';
-import {ActionsType, PostsType, ProfilePageType} from './store';
+import {ActionsType} from './redux-store';
+
+export type PostsType = {
+    id: string
+    message: string
+    likesCount: number
+}
+export type PostsDataType = Array<PostsType>
+export type ProfilePageType = {
+    postsData: PostsDataType
+    newPostText: string
+}
+export type AddPostActionType = {
+    type: typeof ADD_POST
+}
+export type UpdateNewPostActionType = {
+    type: typeof UPDATE_NEW_POST_TEXT
+    newText: string
+}
 
 let initialState: ProfilePageType = {
     postsData: [
@@ -38,13 +56,3 @@ export const addPostCreator = (): AddPostActionType => ({type: ADD_POST})
 
 export const updateNewPostTextCreator = (text: string): UpdateNewPostActionType =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text})
-
-export type AddPostActionType = {
-    type: typeof ADD_POST
-}
-
-export type UpdateNewPostActionType = {
-    type: typeof UPDATE_NEW_POST_TEXT
-    newText: string
-}
-

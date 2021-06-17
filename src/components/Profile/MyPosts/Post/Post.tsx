@@ -1,8 +1,8 @@
 import React from 'react';
-import {PostsType} from '../../../../redux/store';
 import style from './Post.module.css';
+import {PostsType} from '../../../../redux/profile-reducer';
 
-const Post: React.FC<PostsType> = (props) => {
+export const Post: React.FC<PostsType> = (props) => {
     return (
         <div className={style.item}>
             <div className={style.post}>
@@ -25,5 +25,3 @@ const Post: React.FC<PostsType> = (props) => {
         </div>
     )
 }
-
-export default Post;

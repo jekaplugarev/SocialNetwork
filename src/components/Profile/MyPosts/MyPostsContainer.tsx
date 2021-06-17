@@ -1,41 +1,8 @@
-import React from 'react';
 import {MyPosts} from './MyPosts';
 import {connect} from 'react-redux';
-import {addPostCreator, updateNewPostTextCreator} from '../../../redux/profile-reducer';
+import {addPostCreator, ProfilePageType, updateNewPostTextCreator} from '../../../redux/profile-reducer';
 import {AppStateType} from '../../../redux/redux-store';
-import {ProfilePageType} from '../../../redux/store';
-import { Dispatch } from 'redux';
-
-
-// export type MyPostsContainerType = {
-//     store: StoreType
-// }
-
-// export const MyPostsContainer = () => {
-//     return <StoreContext.Consumer>
-//         {
-//             (store: StoreType) => {
-//                 let state = store.getState()
-//
-//                 const addPost = () => {
-//                     store.dispatch(addPostCreator())
-//                 }
-//
-//                 const updateNewPostText = (textPost: string) => {
-//                     store.dispatch(updateNewPostTextCreator(textPost))
-//                 }
-//
-//                 return <MyPosts
-//                     updateNewPostText={updateNewPostText}
-//                     addPost={addPost}
-//                     newPostText={state.profilePage.newPostText}
-//                     posts={state.profilePage.postsData}
-//                 />
-//             }
-//
-//         }
-//     </StoreContext.Consumer>
-// }
+import {Dispatch} from 'redux';
 
 type MapStateToPropsType = {
     profilePage: ProfilePageType
@@ -49,8 +16,6 @@ type MapDispatchToPropsType = {
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         profilePage: state.profilePage
-        // posts: state.profilePage.postsData,
-        // newPostText: state.profilePage.newPostText
     }
 }
 

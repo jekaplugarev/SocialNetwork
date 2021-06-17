@@ -1,5 +1,29 @@
-import {ActionsType, DialogsPageType, MessagesType} from './store';
 import {v1} from 'uuid';
+import {ActionsType} from './redux-store';
+
+export type DialogsType = {
+    id: string
+    name: string
+    img: string
+}
+export type MessagesType = {
+    id: string
+    message: string
+}
+export type DialogsDataType = Array<DialogsType>
+export type MessagesDataType = Array<MessagesType>
+export type DialogsPageType = {
+    dialogsData: DialogsDataType
+    messagesData: MessagesDataType
+    newMessageText: string
+}
+export type AddMessageActionType = {
+    type: typeof ADD_MESSAGE
+}
+export type UpdateNewMessageActionType = {
+    type: typeof UPDATE_NEW_MESSAGE_BODY
+    newText: string
+}
 
 let initialState: DialogsPageType = {
     dialogsData: [
@@ -52,16 +76,7 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
     }
 }
 
-export const addMessageCreator = (): AddMessageActionType => ({type: ADD_MESSAGE}) as const
+export const addMessageCreator = (): AddMessageActionType => ({type: ADD_MESSAGE})
 
 export const updateNewMessageTextCreator = (text: string): UpdateNewMessageActionType =>
-    ({type: UPDATE_NEW_MESSAGE_BODY, newText: text}) as const
-
-export type AddMessageActionType = {
-    type: typeof ADD_MESSAGE
-}
-
-export type UpdateNewMessageActionType = {
-    type: typeof UPDATE_NEW_MESSAGE_BODY
-    newText: string
-}
+    ({type: UPDATE_NEW_MESSAGE_BODY, newText: text})

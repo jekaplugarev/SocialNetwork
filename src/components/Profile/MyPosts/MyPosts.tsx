@@ -1,15 +1,8 @@
 import React, {LegacyRef} from 'react';
-import {DialogsPageType, PostsDataType, PostsType, ProfilePageType} from '../../../redux/store';
 import style from './MyPosts.module.css';
-import Post from './Post/Post';
 import {MyPostsContainerPropsType} from './MyPostsContainer';
-
-// export type MyPostsType = {
-//     newPostText: string
-//     profilePage: ProfilePageType
-//     addPost: () => void
-//     updateNewPostText: (textPost: string) => void
-// }
+import {PostsType} from '../../../redux/profile-reducer';
+import { Post } from './Post/Post';
 
 export const MyPosts: React.FC<MyPostsContainerPropsType> = (props) => {
     let postsElements = props.profilePage.postsData.map((p: PostsType) => <div key={p.id}><Post message={p.message}

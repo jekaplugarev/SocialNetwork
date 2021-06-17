@@ -1,8 +1,14 @@
-import {profileReducer} from './profile-reducer';
-import {dialogsReducer} from './dialogs-reducer';
+import {AddPostActionType, profileReducer, UpdateNewPostActionType} from './profile-reducer';
+import {AddMessageActionType, dialogsReducer, UpdateNewMessageActionType} from './dialogs-reducer';
 import {sidebarReducer} from './sidebar-reducer';
 import { combineReducers, createStore } from 'redux';
-import {StoreType} from './store';
+
+export type AppStateType = ReturnType<typeof rootReducer>
+export type ActionsType =
+    AddPostActionType
+    | UpdateNewPostActionType
+    | AddMessageActionType
+    | UpdateNewMessageActionType
 
 let rootReducer = combineReducers({
     profilePage: profileReducer,
@@ -10,6 +16,4 @@ let rootReducer = combineReducers({
     sidebar: sidebarReducer
 })
 
-export type AppStateType = ReturnType<typeof rootReducer>
-
-export let store: StoreType = createStore(rootReducer)
+export let store = createStore(rootReducer)
