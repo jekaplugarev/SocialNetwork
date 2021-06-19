@@ -32,23 +32,31 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionsType): ProfilePageType | void => {
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost: PostsType = {
                 id: v1(),
                 message: state.newPostText,
                 likesCount: 0
             }
+            let stateCopy = {
+                ...state,
+                postsData: [...state.postsData, newPost],
+                newPostText: ''
+            }
             if (state.newPostText.trim() === '') {
                 return
             }
-            state.postsData.push(newPost)
-            state.newPostText = ''
+            return stateCopy
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+        }
+        default: {
             return state
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText
-            return state
-        default:
-            return state
+        }
     }
 }
 

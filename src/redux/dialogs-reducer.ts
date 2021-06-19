@@ -56,21 +56,30 @@ const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 
 export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsType): DialogsPageType | void => {
+
+
     switch (action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE: {
             let newMessage: MessagesType = {
                 id: v1(),
                 message: state.newMessageText
             }
-            if (state.newMessageText.trim() === '') {
+            let stateCopy = {
+                ...state,
+                messagesData: [...state.messagesData, newMessage],
+                newMessageText: ''
+            }
+            if (stateCopy.newMessageText.trim() === '') {
                 return
             }
-            state.messagesData.push(newMessage)
-            state.newMessageText = ''
-            return state
-        case UPDATE_NEW_MESSAGE_BODY:
-            state.newMessageText = action.newText
-            return state
+            return stateCopy
+        }
+        case UPDATE_NEW_MESSAGE_BODY: {
+            return {
+                ...state,
+                newMessageText: action.newText
+            }
+        }
         default:
             return state
     }
