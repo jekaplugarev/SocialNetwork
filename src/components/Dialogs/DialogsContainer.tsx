@@ -17,7 +17,7 @@ export type DialogsContainerPropsType = MapStateToPropsType & MapDispatchToProps
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
-        dialogsPage: state.dialogsPage,
+        dialogsPage: state.dialogsPage
     }
 }
 
