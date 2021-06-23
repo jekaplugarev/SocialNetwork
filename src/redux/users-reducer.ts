@@ -1,8 +1,11 @@
 export type UsersType = {
     id: string
-    photoUrl: string
+    photos: {
+        small: string
+        large: string
+    }
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: {
         city: string
@@ -51,31 +54,6 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersA
             }
         default:
             return state
-        // case ADD_POST: {
-        //     let newPost: PostsType = {
-        //         id: v1(),
-        //         message: state.newPostText,
-        //         likesCount: 0
-        //     }
-        //     let stateCopy = {
-        //         ...state,
-        //         postsData: [...state.postsData, newPost],
-        //         newPostText: ''
-        //     }
-        //     if (state.newPostText.trim() === '') {
-        //         return
-        //     }
-        //     return stateCopy
-        // }
-        // case UPDATE_NEW_POST_TEXT: {
-        //     return {
-        //         ...state,
-        //         newPostText: action.newText
-        //     }
-        // }
-        // default: {
-        //     return state
-        // }
     }
 }
 

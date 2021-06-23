@@ -1,4 +1,83 @@
 .userPhoto {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+
+.userBtn {
+    min-width: 100px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: deepskyblue;
+    outline: none;
+    border: 1px solid deepskyblue;
+    color: white;
+    border-radius: 5px;
+    align-self: start;
+}
+
+.userBtn:hover {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid deepskyblue;
+    color: #3b3b3b;
+}
+
+.userItem {
+    display: flex;
+    margin: 10px;
+    border: 1px solid deepskyblue;
+    border-radius: 10px;
+
+}
+
+.address {
+    display: flex;
+    margin-right: 40px;
+}
+
+.userName {
+    display: flex;
+    margin-left: 40px;
+}
+
+.userFollow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.fullName {
+    font-size: 20px;
+    color: #3b3b3b;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    line-height: 0;
+}
+
+.status {
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    line-height: 0;
+}
+
+.city {
+    padding-right: 10px;
+}
+
+.country {
+
 }
