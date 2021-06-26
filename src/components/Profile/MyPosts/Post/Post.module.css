@@ -32,7 +32,9 @@
 
 .postMessage {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    line-height: 0;
     background-color: rgba(0, 191, 255, 0.2);
     border-radius: 10px;
     width: fit-content;

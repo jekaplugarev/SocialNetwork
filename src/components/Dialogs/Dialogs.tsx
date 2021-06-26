@@ -14,8 +14,8 @@ export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
 
     const newMessageElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
 
-    const addMessage = () => {
-        props.sendMessage()
+    const onAddMessage = () => {
+        props.addMessage()
     }
 
     const onMessageChange = () => {
@@ -44,7 +44,7 @@ export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
                             placeholder={'Enter your message...'}
                         />
                     <button
-                        onClick={addMessage}
+                        onClick={onAddMessage}
                         className={style.messageBtn}
                     >Send Message
                     </button>

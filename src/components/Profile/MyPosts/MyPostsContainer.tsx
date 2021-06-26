@@ -13,13 +13,13 @@ type MapDispatchToPropsType = {
     addPost: () => void
 }
 
+export type MyPostsContainerPropsType = MapStateToPropsType & MapDispatchToPropsType
+
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         profilePage: state.profilePage
     }
 }
-
-export type MyPostsContainerPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
     return {

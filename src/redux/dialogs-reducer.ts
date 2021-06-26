@@ -69,7 +69,7 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
                 messagesData: [...state.messagesData, newMessage],
                 newMessageText: ''
             }
-            if (stateCopy.newMessageText.trim() === '') {
+            if (state.newMessageText.trim() === '') {
                 return
             }
             return stateCopy

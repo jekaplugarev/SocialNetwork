@@ -24,6 +24,26 @@
     color: #3b3b3b;
 }
 
+.userBtnUnfollow {
+    min-width: 100px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid deepskyblue;
+    color: #3b3b3b;
+    border-radius: 5px;
+    align-self: start;
+}
+
+.userBtnUnfollow:hover {
+    background-color: deepskyblue;
+    outline: none;
+    border: 1px solid deepskyblue;
+    color: white;
+}
+
 .userItem {
     display: flex;
     margin: 10px;

@@ -10,7 +10,7 @@ type MapStateToPropsType = {
 
 type MapDispatchToPropsType = {
     updateNewMessageText: (textMessage: string) => void
-    sendMessage: () => void
+    addMessage: () => void
 }
 
 export type DialogsContainerPropsType = MapStateToPropsType & MapDispatchToPropsType
@@ -26,7 +26,7 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
         updateNewMessageText: (textMessage: string) => {
             dispatch(updateNewMessageTextCreator(textMessage))
         },
-        sendMessage: () => {
+        addMessage: () => {
             dispatch(addMessageCreator())
         }
     }
