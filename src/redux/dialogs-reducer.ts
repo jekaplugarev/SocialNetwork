@@ -1,6 +1,4 @@
 import {v1} from 'uuid';
-import {ActionsType} from './redux-store';
-
 export type DialogsType = {
     id: string
     name: string
@@ -24,6 +22,11 @@ export type UpdateNewMessageActionType = {
     type: typeof UPDATE_NEW_MESSAGE_BODY
     newText: string
 }
+
+type ActionsType =
+    AddMessageActionType
+    | UpdateNewMessageActionType
+
 
 let initialState: DialogsPageType = {
     dialogsData: [

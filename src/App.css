@@ -16,6 +16,7 @@ body {
 }
 
 .app-wrapper-content {
+    width: 700px;
     border-radius: 5px;
     grid-area: c;
     background-color: white;
