@@ -1,32 +1,43 @@
 export type AuthType = {
-    userId: number | null
+    id: number | null
     email: string | null
     login: string | null
+}
+export type AuthPropertiesType = {
+    data: AuthType
     resultCode: number | null
+    messages: string[]
     isAuth: boolean
 }
 export type SetUserDataActionType = {
     type: 'SET_USER_DATA'
-    userId: number | null
+    id: number | null
     email: string | null
     login: string | null
 }
 type AuthActionType = SetUserDataActionType
 
-let initialState: AuthType = {
-    userId: null,
-    email: null,
-    login: null,
+let initialState: AuthPropertiesType = {
+    data: {
+        id: null,
+        email: null,
+        login: null,
+    },
     resultCode: null,
+    messages: [],
     isAuth: false
 }
 
-export const authReducer = (state: AuthType = initialState, action: AuthActionType): AuthType | void => {
+export const authReducer = (state: AuthPropertiesType = initialState, action: AuthActionType): AuthPropertiesType | void => {
     switch (action.type) {
         case 'SET_USER_DATA':
             return {
                 ...state,
-                ...action.data,
+                data: {
+                    id: action.id,
+                    email: action.email,
+                    login: action.login
+                },
                 isAuth: true
             }
         default:
@@ -34,9 +45,6 @@ export const authReducer = (state: AuthType = initialState, action: AuthActionTy
     }
 }
 
-export const setAuthUserData = (userId: number | null, email: string | null, login: string | null): SetUserDataActionType => ({
-    type: 'SET_USER_DATA',
-    userId,
-    email,
-    login
+export const setAuthUserData = (id: number | null, email: string | null, login: string | null): SetUserDataActionType => ({
+    type: 'SET_USER_DATA', id, email, login
 })
