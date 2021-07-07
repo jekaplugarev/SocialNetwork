@@ -36,13 +36,13 @@ const ProfileInfo = (props: ProfileAPIType) => {
                     <div>
                         <img src={facebook} alt="facebook"/>
                         <a href={props.profile.contacts.facebook}>
-                            {props.profile.contacts.facebook}
+                            {props.profile.contacts.facebook ? props.profile.contacts.facebook : 'I am not here'}
                         </a>
                     </div>
                     <div>
                         <img src={instagram} alt="instagram"/>
                         <a href={props.profile.contacts.instagram}>
-                            {props.profile.contacts.instagram}
+                            {props.profile.contacts.instagram ? props.profile.contacts.instagram : 'I am not here'}
                         </a>
                     </div>
                 </div>

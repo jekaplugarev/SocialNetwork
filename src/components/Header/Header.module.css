@@ -8,11 +8,13 @@
     justify-content: center;
     margin-bottom: 10px;
 }
+
 .header img {
     display: block;
     height: 40px;
     margin: 0 20px 0 0;
 }
+
 .title {
     font-size: 1.5em;
     text-transform: uppercase;
@@ -20,9 +22,26 @@
     letter-spacing: 0.2em;
     color: black;
 }
+
 .nav {
     display: flex;
     text-decoration: none;
     color: black;
     align-items: center;
 }
+
+.loginBlock {
+    display: flex;
+    margin-left: 50px;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+.loginBlock a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
