@@ -10,7 +10,6 @@ import React from 'react';
 import {Users} from './Users';
 import {Preloader} from '../common/Preloader/Preloader';
 
-
 type MapStateToPropsType = {
     usersPage: UsersPageType
 }

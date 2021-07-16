@@ -172,4 +172,3 @@ export const unfollow = (userId: string): ThunkType => {
             })
     }
 }
-
