@@ -15,6 +15,7 @@
     color: white;
     border-radius: 5px;
     align-self: start;
+    cursor: pointer;
 }
 
 .userBtn:hover {
@@ -22,6 +23,11 @@
     outline: none;
     border: 1px solid deepskyblue;
     color: #3b3b3b;
+}
+
+.userBtn:disabled {
+    background-color: rgba(152, 152, 152, 0.51);
+    border: 1px solid rgba(152, 152, 152, 0.51);
 }
 
 .userBtnUnfollow {
@@ -42,6 +48,12 @@
     outline: none;
     border: 1px solid deepskyblue;
     color: white;
+}
+
+.userBtnUnfollow:disabled {
+    background-color: rgba(152, 152, 152, 0.51);
+    border: 1px solid rgba(152, 152, 152, 0.51);
+    color: #3b3b3b;
 }
 
 .userItem {

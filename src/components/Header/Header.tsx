@@ -15,7 +15,7 @@ const Header = (props: HeaderPropsType) => {
                 <span className={style.title}>My Social Network</span>
             </NavLink>
             <div className={style.loginBlock}>
-                {props.auth.isAuth ? props.auth.data.login : <NavLink to="/login">Login</NavLink>}
+                {props.auth.isAuth ? `Hello, ${props.auth.data.login}` : <NavLink to="/login">Login</NavLink>}
             </div>
         </header>
     )
