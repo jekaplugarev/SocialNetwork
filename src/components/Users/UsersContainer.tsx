@@ -10,6 +10,7 @@ import React from 'react';
 import {Users} from './Users';
 import {Preloader} from '../common/Preloader/Preloader';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
+import {compose} from 'redux';
 
 type MapStateToPropsType = {
     usersPage: UsersPageType
@@ -55,9 +56,10 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-let withRedirect = withAuthRedirect(UsersContainer)
-
-export default connect(mapStateToProps,
-    {
-        follow, unfollow, setCurrentPage, getUsers, toggleIsFollowingProgress
-    })(withRedirect)
+export default compose<React.ComponentType>(
+    withAuthRedirect,
+    connect(mapStateToProps,
+        {
+            follow, unfollow, setCurrentPage, getUsers, toggleIsFollowingProgress
+        }),
+)(UsersContainer)

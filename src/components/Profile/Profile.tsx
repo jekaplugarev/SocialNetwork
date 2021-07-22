@@ -7,7 +7,7 @@ import {ProfileAPIType} from '../../redux/profile-reducer';
 export const Profile = (props: ProfileAPIType) => {
     return (
         <div className={style.profile}>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsContainer/>
         </div>
     )

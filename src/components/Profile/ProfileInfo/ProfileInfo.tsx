@@ -5,6 +5,7 @@ import {ProfileAPIType} from '../../../redux/profile-reducer';
 import facebook from '../../../img/facebook.svg'
 import instagram from '../../../img/instagram.svg'
 import userPhoto from '../../../img/user.jpg';
+import ProfileStatus from '../ProfileStatus';
 
 const ProfileInfo = (props: ProfileAPIType) => {
     if (!props.profile) {
@@ -13,14 +14,12 @@ const ProfileInfo = (props: ProfileAPIType) => {
 
     return (
         <div>
-            <div>
-                {/*<img src="https://imagesbase.ru/uploads/posts/2016-12/1481272915_imagesbase.ru-5254.jpg" alt="Main content"/>*/}
-            </div>
             <div className={style.descriptionBlock}>
                 <div className={style.img}>
                     <img
                         src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt="Ava"/>
                 </div>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 <div className={style.name}>
                     {props.profile.fullName}
                 </div>
@@ -29,7 +28,7 @@ const ProfileInfo = (props: ProfileAPIType) => {
                         <b>Looking For A Job:</b> {props.profile.lookingForAJob ? 'Yes' : 'No'}
                     </div>
                     <div className={style.status}>
-                        <b>Status:</b> {props.profile.lookingForAJobDescription}
+                        <b>{props.profile.lookingForAJobDescription}</b>
                     </div>
                 </div>
                 <div className={style.contacts}>

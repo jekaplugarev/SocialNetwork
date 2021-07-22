@@ -4,7 +4,6 @@ import {DialogItem} from './DialogItem/DialogItem';
 import {Message} from './Message/Message';
 import {DialogsContainerPropsType} from './DialogsContainer';
 import {DialogsType, MessagesType} from '../../redux/dialogs-reducer';
-import {Redirect} from 'react-router-dom';
 
 export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
     let dialogsElements = props.dialogsPage.dialogsData.map((d: DialogsType) => <div key={d.id}>
@@ -24,10 +23,6 @@ export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
             const textMessage = newMessageElement.current.value
             props.updateNewMessageText(textMessage)
         }
-    }
-
-    if (!props.auth.isAuth) {
-        return <Redirect to={'/login'}/>
     }
 
     return (
