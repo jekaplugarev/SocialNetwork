@@ -1,4 +1,5 @@
 import {v1} from 'uuid';
+
 export type DialogsType = {
     id: string
     name: string
@@ -13,20 +14,14 @@ export type MessagesDataType = Array<MessagesType>
 export type DialogsPageType = {
     dialogsData: DialogsDataType
     messagesData: MessagesDataType
-    newMessageText: string
 }
 export type AddMessageActionType = {
     type: typeof ADD_MESSAGE
-}
-export type UpdateNewMessageActionType = {
-    type: typeof UPDATE_NEW_MESSAGE_BODY
-    newText: string
+    newMessageBody: string
 }
 
 type ActionsType =
     AddMessageActionType
-    | UpdateNewMessageActionType
-
 
 let initialState: DialogsPageType = {
     dialogsData: [
@@ -52,11 +47,9 @@ let initialState: DialogsPageType = {
         {id: v1(), message: 'How are you?'},
         {id: v1(), message: 'I am good'},
     ],
-    newMessageText: ''
 }
 
 const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 
 export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsType): DialogsPageType | void => {
 
@@ -65,30 +58,20 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
         case ADD_MESSAGE: {
             let newMessage: MessagesType = {
                 id: v1(),
-                message: state.newMessageText
+                message: action.newMessageBody
             }
             let stateCopy = {
                 ...state,
                 messagesData: [...state.messagesData, newMessage],
-                newMessageText: ''
             }
-            if (state.newMessageText.trim() === '') {
+            if (action.newMessageBody.trim() === '') {
                 return
             }
             return stateCopy
-        }
-        case UPDATE_NEW_MESSAGE_BODY: {
-            return {
-                ...state,
-                newMessageText: action.newText
-            }
         }
         default:
             return state
     }
 }
 
-export const addMessageCreator = (): AddMessageActionType => ({type: ADD_MESSAGE})
-
-export const updateNewMessageTextCreator = (text: string): UpdateNewMessageActionType =>
-    ({type: UPDATE_NEW_MESSAGE_BODY, newText: text})
+export const addMessageCreator = (newMessageBody: string): AddMessageActionType => ({type: ADD_MESSAGE, newMessageBody})
