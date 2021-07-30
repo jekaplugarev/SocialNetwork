@@ -69,7 +69,7 @@ const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
 
-export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionsType): ProfilePageType | void => {
+export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionsType): ProfilePageType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: PostsType = {

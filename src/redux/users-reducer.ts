@@ -72,7 +72,7 @@ let initialState: UsersPageType = {
     followingInProgress: []
 }
 
-export const usersReducer = (state: UsersPageType = initialState, action: UsersActionType): UsersPageType | void => {
+export const usersReducer = (state: UsersPageType = initialState, action: UsersActionType): UsersPageType => {
     switch (action.type) {
         case 'FOLLOW':
             return {

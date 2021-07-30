@@ -51,7 +51,7 @@ let initialState: DialogsPageType = {
 
 const ADD_MESSAGE = 'ADD-MESSAGE'
 
-export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionsType): DialogsPageType | void => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionsType): DialogsPageType => {
 
 
     switch (action.type) {

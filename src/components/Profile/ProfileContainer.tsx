@@ -46,7 +46,6 @@ class ProfileContainer extends React.Component <PropsType> {
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
     profile: state.profilePage,
-    // @ts-ignore
     authorizedUserId: state.auth.id
 })
 
