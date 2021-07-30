@@ -7,9 +7,9 @@ import {NavLink} from 'react-router-dom';
 type UsersPropsType = {
     usersPage: UsersPageType
     onPageChanged: (p: number) => void
-    follow: (id: string) => void
-    unfollow: (id: string) => void
-    followingInProgress: Array<string>
+    follow: (id: number) => void
+    unfollow: (id: number) => void
+    followingInProgress: Array<number>
 }
 
 export const Users = (props: UsersPropsType) => {

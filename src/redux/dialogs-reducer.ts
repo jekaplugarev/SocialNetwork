@@ -20,7 +20,7 @@ export type AddMessageActionType = {
     newMessageBody: string
 }
 
-type ActionsType =
+export type DialogsActionsType =
     AddMessageActionType
 
 let initialState: DialogsPageType = {
@@ -51,7 +51,7 @@ let initialState: DialogsPageType = {
 
 const ADD_MESSAGE = 'ADD-MESSAGE'
 
-export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsType): DialogsPageType | void => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionsType): DialogsPageType | void => {
 
 
     switch (action.type) {
@@ -60,14 +60,10 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
                 id: v1(),
                 message: action.newMessageBody
             }
-            let stateCopy = {
+            return {
                 ...state,
                 messagesData: [...state.messagesData, newMessage],
             }
-            if (action.newMessageBody.trim() === '') {
-                return
-            }
-            return stateCopy
         }
         default:
             return state

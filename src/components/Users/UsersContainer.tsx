@@ -17,10 +17,10 @@ type MapStateToPropsType = {
 }
 
 type MapDispatchToPropsType = {
-    follow: (userID: string) => void
-    unfollow: (userID: string) => void
+    follow: (userID: number) => void
+    unfollow: (userID: number) => void
     setCurrentPage: (currentPage: number) => void
-    toggleIsFollowingProgress: (isFetching: boolean, userId: string) => void
+    toggleIsFollowingProgress: (isFetching: boolean, userId: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
 }
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import style from './Header.module.css';
-import {AuthPropertiesType} from '../../redux/auth-reducer';
+import {AuthType} from '../../redux/auth-reducer';
 
 type HeaderPropsType = {
-    auth: AuthPropertiesType
+    auth: AuthType
+    logout: () => void
 }
 
 const Header = (props: HeaderPropsType) => {
@@ -15,7 +16,16 @@ const Header = (props: HeaderPropsType) => {
                 <span className={style.title}>My Social Network</span>
             </NavLink>
             <div className={style.loginBlock}>
-                {props.auth.isAuth ? `Hello, ${props.auth.data.login}` : <NavLink to="/login">Login</NavLink>}
+                {props.auth.isAuth
+                    ? <div className={style.login}>
+                        {props.auth.login}
+                        <button
+                            onClick={props.logout}
+                            className={style.logoutBtn}
+
+                        >Log out</button>
+                </div>
+                    : <NavLink to="/login">Login</NavLink>}
             </div>
         </header>
     )

@@ -1,7 +1,11 @@
 .postsBlock {
     margin: 10px;
-    margin-left: 20px;
 }
+
+.postsTitle {
+    margin: 10px;
+}
+
 .posts {
     padding-top: 10px;
     margin: 0 10px 10px 0;
@@ -33,7 +37,6 @@
 
 .postField {
     margin: 10px;
-    margin-left: 0;
     outline: none;
     resize: none;
     border-radius: 5px;
@@ -41,7 +44,7 @@
     font-family: sans-serif;
     padding: 10px;
     display: flex;
-    width: calc(100% - 50px);
+    width: calc(100% - 30px);
     overflow: hidden;
     border-color: #bebebe;
 

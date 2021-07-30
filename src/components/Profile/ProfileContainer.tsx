@@ -9,10 +9,11 @@ import {compose} from 'redux';
 
 type MapStateToPropsType = {
     profile: ProfilePageType
+    authorizedUserId: number | null
 }
 type MapDispatchToPropsType = {
-    getUserProfile: (userId: string) => void
-    getStatus: (userId: string) => void
+    getUserProfile: (userId: number) => void
+    getStatus: (userId: number) => void
     updateStatus: (status: string) => void
 }
 
@@ -26,11 +27,10 @@ type PropsType = RouteComponentProps<PathParamsType> & ProfileContainerPropsType
 class ProfileContainer extends React.Component <PropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if (!userId) {
-            userId = '17666' //17666
-        }
-        this.props.getUserProfile(userId)
-        this.props.getStatus(userId)
+        !userId && (userId = String(this.props.authorizedUserId)) //17666
+
+        this.props.getUserProfile(+userId)
+        this.props.getStatus(+userId)
     }
 
     render() {
@@ -43,11 +43,12 @@ class ProfileContainer extends React.Component <PropsType> {
     }
 }
 
-const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
-    return {
-        profile: state.profilePage,
-    }
-}
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
+    profile: state.profilePage,
+    // @ts-ignore
+    authorizedUserId: state.auth.id
+})
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
