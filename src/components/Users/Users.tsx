@@ -1,19 +1,22 @@
 import React from 'react';
 import style from './Users.module.css';
 import userPhoto from '../../img/user.jpg';
-import {UsersPageType} from '../../redux/users-reducer';
+import {UsersType} from '../../redux/users-reducer';
 import {NavLink} from 'react-router-dom';
 
 type UsersPropsType = {
-    usersPage: UsersPageType
-    onPageChanged: (p: number) => void
-    follow: (id: number) => void
-    unfollow: (id: number) => void
-    followingInProgress: Array<number>
+    users: UsersType[]
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
+    followingInProgress: number[]
 }
 
 export const Users = (props: UsersPropsType) => {
-    let pagesCount = Math.ceil(props.usersPage.totalUsersCount / props.usersPage.pageSize)
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = []
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
@@ -24,7 +27,7 @@ export const Users = (props: UsersPropsType) => {
             {pages.map(p => {
                     return (
                         <span
-                            className={props.usersPage.currentPage === p ? style.selectedPage : style.page}
+                            className={props.currentPage === p ? style.selectedPage : style.page}
                             onClick={() => {
                                 props.onPageChanged(p)
                             }}>
@@ -35,7 +38,7 @@ export const Users = (props: UsersPropsType) => {
             )}
         </div>
         {
-            props.usersPage.users.map(u => <div key={u.id} className={style.userItem}>
+            props.users.map(u => <div key={u.id} className={style.userItem}>
                 <div className={style.userFollow}>
                     <div className={style.userPhoto}>
                         <NavLink to={'/profile/' + u.id}>
