@@ -5,7 +5,7 @@ import {ProfileAPIType} from '../../../redux/profile-reducer';
 import facebook from '../../../img/facebook.svg'
 import instagram from '../../../img/instagram.svg'
 import userPhoto from '../../../img/user.jpg';
-import ProfileStatus from '../ProfileStatus';
+import {ProfileStatusWithHooks} from '../ProfileStatusWithHooks';
 
 const ProfileInfo = (props: ProfileAPIType) => {
     if (!props.profile) {
@@ -19,7 +19,7 @@ const ProfileInfo = (props: ProfileAPIType) => {
                     <img
                         src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt="Ava"/>
                 </div>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 <div className={style.name}>
                     {props.profile.fullName}
                 </div>
