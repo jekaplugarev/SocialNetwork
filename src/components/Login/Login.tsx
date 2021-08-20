@@ -29,9 +29,9 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 
 type LoginPropsType = MapDispatchToPropsType & MapStateToPropsType
 
-const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
+const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({error, handleSubmit}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field
                     placeholder={'Email'}
@@ -57,8 +57,8 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                     type={'checkbox'}
                 />Remember me
             </div>
-            {props.error && <div className={style.formSummaryError}>
-                {props.error}
+            {error && <div className={style.formSummaryError}>
+                {error}
             </div>}
             <div>
                 <button>
@@ -71,13 +71,13 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
 
-const Login = (props: LoginPropsType) => {
+const Login = ({auth: {isAuth}, login}: LoginPropsType) => {
 
     const onSubmit = (formData: FormDataType) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe)
     }
 
-    if (props.auth.isAuth) {
+    if (isAuth) {
         return <Redirect to={'/profile'}/>
     }
 

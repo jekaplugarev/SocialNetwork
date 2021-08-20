@@ -7,8 +7,8 @@ import instagram from '../../../img/instagram.svg'
 import userPhoto from '../../../img/user.jpg';
 import {ProfileStatusWithHooks} from '../ProfileStatusWithHooks';
 
-const ProfileInfo = (props: ProfileAPIType) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}: ProfileAPIType) => {
+    if (!profile) {
         return <Preloader/>
     }
 
@@ -17,31 +17,31 @@ const ProfileInfo = (props: ProfileAPIType) => {
             <div className={style.descriptionBlock}>
                 <div className={style.img}>
                     <img
-                        src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt="Ava"/>
+                        src={profile.photos.large ? profile.photos.large : userPhoto} alt="Ava"/>
                 </div>
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
                 <div className={style.name}>
-                    {props.profile.fullName}
+                    {profile.fullName}
                 </div>
                 <div>
                     <div className={style.job}>
-                        <b>Looking For A Job:</b> {props.profile.lookingForAJob ? 'Yes' : 'No'}
+                        <b>Looking For A Job:</b> {profile.lookingForAJob ? 'Yes' : 'No'}
                     </div>
                     <div className={style.status}>
-                        <b>{props.profile.lookingForAJobDescription}</b>
+                        <b>{profile.lookingForAJobDescription}</b>
                     </div>
                 </div>
                 <div className={style.contacts}>
                     <div>
                         <img src={facebook} alt="facebook"/>
-                        <a href={props.profile.contacts.facebook}>
-                            {props.profile.contacts.facebook ? props.profile.contacts.facebook : 'I am not here'}
+                        <a href={profile.contacts.facebook}>
+                            {profile.contacts.facebook ? profile.contacts.facebook : 'I am not here'}
                         </a>
                     </div>
                     <div>
                         <img src={instagram} alt="instagram"/>
-                        <a href={props.profile.contacts.instagram}>
-                            {props.profile.contacts.instagram ? props.profile.contacts.instagram : 'I am not here'}
+                        <a href={profile.contacts.instagram}>
+                            {profile.contacts.instagram ? profile.contacts.instagram : 'I am not here'}
                         </a>
                     </div>
                 </div>

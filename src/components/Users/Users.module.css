@@ -115,25 +115,10 @@
 
 }
 
-.selectedPage {
-    font-weight: bold;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
 .pages {
     margin: 10px;
     max-width: 515px;
     overflow: hidden;
-}
-
-.page {
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.page:hover {
-    color: rgba(59, 59, 59, 0.6);
 }
 
 .img {

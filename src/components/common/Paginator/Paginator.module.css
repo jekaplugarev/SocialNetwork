@@ -1,0 +1,16 @@
+.selectedPage {
+    font-weight: bold;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.pages {
+    margin: 10px;
+    max-width: 515px;
+    overflow: hidden;
+}
+
+.page {
+    margin-right: 10px;
+    cursor: pointer;
+}

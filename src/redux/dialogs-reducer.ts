@@ -49,7 +49,7 @@ let initialState: DialogsPageType = {
     ],
 }
 
-const ADD_MESSAGE = 'ADD-MESSAGE'
+const ADD_MESSAGE = 'dialogs/ADD-MESSAGE'
 
 export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionsType): DialogsPageType => {
 

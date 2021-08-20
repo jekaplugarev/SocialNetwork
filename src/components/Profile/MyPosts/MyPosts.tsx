@@ -4,13 +4,13 @@ import {MyPostsContainerPropsType} from './MyPostsContainer';
 import {PostsType} from '../../../redux/profile-reducer';
 import {Post} from './Post/Post';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
-import {maxLengthCreator, required} from '../../../utils/validators/validators';
 import {Textarea} from '../../common/FormsControl/FormsControls';
 
-export const MyPosts: React.FC<MyPostsContainerPropsType> = (props) => {
-    let postsElements = props.profilePage.postsData.map((p: PostsType) => <div key={p.id}><Post message={p.message}
-                                                                                                likesCount={p.likesCount}
-                                                                                                id={p.id}/></div>)
+export const MyPosts = React.memo((props: MyPostsContainerPropsType) => {
+    let postsElements = props.profilePage.postsData.map((p: PostsType) => <div key={p.id}><Post
+        message={p.message}
+        likesCount={p.likesCount}
+        id={p.id}/></div>)
 
     type ValuesType = {
         newPostText?: string
@@ -20,6 +20,7 @@ export const MyPosts: React.FC<MyPostsContainerPropsType> = (props) => {
         if (values.newPostText) {
             props.addPost(values.newPostText)
         }
+        values.newPostText = ''
     }
 
     return (
@@ -31,9 +32,9 @@ export const MyPosts: React.FC<MyPostsContainerPropsType> = (props) => {
             </div>
         </div>
     )
-}
+})
 
-const maxLength100 = maxLengthCreator(100)
+// const maxLength100 = maxLengthCreator(100)
 
 let AddNewPostForm: React.FC<InjectedFormProps> = (props) => {
     return (<form
@@ -46,7 +47,6 @@ let AddNewPostForm: React.FC<InjectedFormProps> = (props) => {
                 placeholder="Post message..."
                 className={style.postField}
                 rows={1}
-                validate={[required, maxLength100]}
             />
             <button className={style.postBtn}>
                 Add Post

@@ -5,8 +5,7 @@ import {Message} from './Message/Message';
 import {DialogsContainerPropsType} from './DialogsContainer';
 import {DialogsType, MessagesType} from '../../redux/dialogs-reducer';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
-import { Textarea } from '../common/FormsControl/FormsControls';
-import {maxLengthCreator, required} from '../../utils/validators/validators';
+import {Textarea} from '../common/FormsControl/FormsControls';
 
 export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
     let dialogsElements = props.dialogsPage.dialogsData.map((d: DialogsType) => <div key={d.id}>
@@ -23,6 +22,7 @@ export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
         if (values.newMessageBody) {
             props.addMessage(values.newMessageBody)
         }
+        values.newMessageBody = ''
     }
 
     return (
@@ -40,7 +40,7 @@ export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
     )
 }
 
-const maxLength100 = maxLengthCreator(100)
+// const maxLength100 = maxLengthCreator(100)
 
 const AddMessageForm: React.FC<InjectedFormProps> = (props) => {
     return (
@@ -53,7 +53,6 @@ const AddMessageForm: React.FC<InjectedFormProps> = (props) => {
                 placeholder="Enter your message..."
                 className={style.messageField}
                 rows={1}
-                validate={[required, maxLength100]}
             />
             <button className={style.messageBtn}>
                 Send

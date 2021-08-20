@@ -13,9 +13,11 @@ let initialState: AppAuthType = {
     initialized: false
 }
 
+const INITIALIZED_SUCCESS = 'app/INITIALIZED_SUCCESS'
+
 export const appReducer = (state: AppAuthType = initialState, action: AppAuthActionType): AppAuthType => {
     switch (action.type) {
-        case 'INITIALIZED_SUCCESS':
+        case INITIALIZED_SUCCESS:
             return {
                 ...state,
                 initialized: true
@@ -26,7 +28,7 @@ export const appReducer = (state: AppAuthType = initialState, action: AppAuthAct
 }
 
 export const initializedSuccess = () => ({
-    type: 'INITIALIZED_SUCCESS',
+    type: INITIALIZED_SUCCESS,
 } as const)
 
 export const initializeApp = (): AppThunkType => async dispatch => {

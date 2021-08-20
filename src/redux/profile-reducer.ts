@@ -42,6 +42,10 @@ export type AddPostActionType = {
     type: typeof ADD_POST
     newPostText: string
 }
+export type DeletePostActionType = {
+    type: typeof DELETE_POST
+    postId: string
+}
 export type SetUserProfileActionType = {
     type: typeof SET_USER_PROFILE
     profile: ProfileType | null
@@ -53,6 +57,7 @@ export type SetStatusActionType = {
 
 export type ProfileActionsType =
     AddPostActionType
+    | DeletePostActionType
     | SetUserProfileActionType
     | SetStatusActionType
 
@@ -65,9 +70,10 @@ let initialState: ProfilePageType = {
     status: ''
 }
 
-const ADD_POST = 'ADD-POST'
-const SET_USER_PROFILE = 'SET-USER-PROFILE'
-const SET_STATUS = 'SET-STATUS'
+const ADD_POST = 'profile/ADD-POST'
+const DELETE_POST = 'profile/DELETE-POST'
+const SET_USER_PROFILE = 'profile/SET-USER-PROFILE'
+const SET_STATUS = 'profile/SET-STATUS'
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionsType): ProfilePageType => {
     switch (action.type) {
@@ -82,6 +88,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
                 postsData: [...state.postsData, newPost],
             }
         }
+        case DELETE_POST:
+            return {...state, postsData: state.postsData.filter(p => p.id != action.postId)}
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
@@ -96,31 +104,27 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
 
 export const addPost = (newPostText: string): AddPostActionType => ({type: ADD_POST, newPostText})
 
+export const deletePost = (postId: string): DeletePostActionType => ({type: DELETE_POST, postId})
+
 export const setUserProfile = (profile: ProfileType | null): SetUserProfileActionType =>
     ({type: SET_USER_PROFILE, profile})
 
 export const setStatus = (status: string): SetStatusActionType =>
     ({type: SET_STATUS, status})
 
-export const getUserProfile = (userId: number) => (dispatch: Dispatch<ProfileActionsType>) => {
-    usersAPI.getProfile(userId)
-        .then(response => {
-            dispatch(setUserProfile(response.data))
-        })
+export const getUserProfile = (userId: number) => async (dispatch: Dispatch<ProfileActionsType>) => {
+    let response = await usersAPI.getProfile(userId)
+    dispatch(setUserProfile(response.data))
 }
 
-export const getStatus = (userId: number) => (dispatch: Dispatch<ProfileActionsType>) => {
-    profileAPI.getStatus(userId)
-        .then(response => {
-            dispatch(setStatus(response.data))
-        })
+export const getStatus = (userId: number) => async (dispatch: Dispatch<ProfileActionsType>) => {
+    let response = await profileAPI.getStatus(userId)
+    dispatch(setStatus(response.data))
 }
 
-export const updateStatus = (status: string) => (dispatch: Dispatch<ProfileActionsType>) => {
-    profileAPI.updateStatus(status)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status))
-            }
-        })
+export const updateStatus = (status: string) => async (dispatch: Dispatch<ProfileActionsType>) => {
+    let response = await profileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status))
+    }
 }
