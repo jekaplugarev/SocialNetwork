@@ -36,8 +36,11 @@ export const Users = ({
     return (
         <div>
             <div className={style.pages}>
-                <Paginator currentPage={currentPage} onPageChanged={onPageChanged} pageSize={pageSize}
-                           totalUsersCount={totalUsersCount}/>
+                <Paginator
+                    currentPage={currentPage}
+                    onPageChanged={onPageChanged}
+                    pageSize={pageSize}
+                    totalItemsCount={totalUsersCount}/>
             </div>
 
             {userList}
