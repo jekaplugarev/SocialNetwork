@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/SocialNetwork/static/css/main.a6391eea.chunk.css",
+    "main.js": "/SocialNetwork/static/js/main.2e2bf1ab.chunk.js",
+    "main.js.map": "/SocialNetwork/static/js/main.2e2bf1ab.chunk.js.map",
+    "runtime-main.js": "/SocialNetwork/static/js/runtime-main.fc9f392f.js",
+    "runtime-main.js.map": "/SocialNetwork/static/js/runtime-main.fc9f392f.js.map",
+    "static/js/2.fd221fae.chunk.js": "/SocialNetwork/static/js/2.fd221fae.chunk.js",
+    "static/js/2.fd221fae.chunk.js.map": "/SocialNetwork/static/js/2.fd221fae.chunk.js.map",
+    "static/css/3.d734a03f.chunk.css": "/SocialNetwork/static/css/3.d734a03f.chunk.css",
+    "static/js/3.ce0781de.chunk.js": "/SocialNetwork/static/js/3.ce0781de.chunk.js",
+    "static/js/3.ce0781de.chunk.js.map": "/SocialNetwork/static/js/3.ce0781de.chunk.js.map",
+    "static/css/4.6dc149cc.chunk.css": "/SocialNetwork/static/css/4.6dc149cc.chunk.css",
+    "static/js/4.c06719dd.chunk.js": "/SocialNetwork/static/js/4.c06719dd.chunk.js",
+    "static/js/4.c06719dd.chunk.js.map": "/SocialNetwork/static/js/4.c06719dd.chunk.js.map",
+    "static/js/5.83f0b184.chunk.js": "/SocialNetwork/static/js/5.83f0b184.chunk.js",
+    "static/js/5.83f0b184.chunk.js.map": "/SocialNetwork/static/js/5.83f0b184.chunk.js.map",
+    "index.html": "/SocialNetwork/index.html",
+    "static/css/3.d734a03f.chunk.css.map": "/SocialNetwork/static/css/3.d734a03f.chunk.css.map",
+    "static/css/4.6dc149cc.chunk.css.map": "/SocialNetwork/static/css/4.6dc149cc.chunk.css.map",
+    "static/css/main.a6391eea.chunk.css.map": "/SocialNetwork/static/css/main.a6391eea.chunk.css.map",
+    "static/js/2.fd221fae.chunk.js.LICENSE.txt": "/SocialNetwork/static/js/2.fd221fae.chunk.js.LICENSE.txt",
+    "static/media/Iphone-spinner-2.d3fbaf2b.gif": "/SocialNetwork/static/media/Iphone-spinner-2.d3fbaf2b.gif",
+    "static/media/facebook.1bc02887.svg": "/SocialNetwork/static/media/facebook.1bc02887.svg",
+    "static/media/instagram.7a3b5420.svg": "/SocialNetwork/static/media/instagram.7a3b5420.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fc9f392f.js",
+    "static/js/2.fd221fae.chunk.js",
+    "static/css/main.a6391eea.chunk.css",
+    "static/js/main.2e2bf1ab.chunk.js"
+  ]
+}
