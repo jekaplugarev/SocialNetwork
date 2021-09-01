@@ -89,7 +89,7 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
             }
         }
         case DELETE_POST:
-            return {...state, postsData: state.postsData.filter(p => p.id != action.postId)}
+            return {...state, postsData: state.postsData.filter(p => p.id !== action.postId)}
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
