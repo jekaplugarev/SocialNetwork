@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import style from './ProfileInfo.module.css';
 import {Preloader} from '../../common/Preloader/Preloader';
 import {ProfileAPIType} from '../../../redux/profile-reducer';
@@ -7,9 +7,15 @@ import instagram from '../../../img/instagram.svg'
 import userPhoto from '../../../img/user.jpg';
 import {ProfileStatusWithHooks} from '../ProfileStatusWithHooks';
 
-const ProfileInfo = ({profile, status, updateStatus}: ProfileAPIType) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: ProfileAPIType) => {
     if (!profile) {
         return <Preloader/>
+    }
+
+    const onMainPhotoSelected = (e: ChangeEvent<any>) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
     }
 
     return (
@@ -17,8 +23,9 @@ const ProfileInfo = ({profile, status, updateStatus}: ProfileAPIType) => {
             <div className={style.descriptionBlock}>
                 <div className={style.img}>
                     <img
-                        src={profile.photos.large ? profile.photos.large : userPhoto} alt="Ava"/>
+                        src={profile.photos.large || userPhoto} alt="Ava"/>
                 </div>
+                {isOwner && <div><div>Change avatar</div><input type={'file'} onChange={onMainPhotoSelected} placeholder={'File'}/></div>}
                 <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
                 <div className={style.name}>
                     {profile.fullName}
