@@ -1,9 +1,6 @@
 import {v1} from 'uuid';
-
 import {profileAPI, usersAPI} from '../api/api';
-
 import {AppStateType, AppThunkType} from './redux-store';
-import {stopSubmit} from 'redux-form';
 
 export type ProfileUpdateType = {
     contacts: ContactsType
