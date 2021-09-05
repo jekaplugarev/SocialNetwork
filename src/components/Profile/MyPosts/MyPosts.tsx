@@ -34,7 +34,6 @@ export const MyPosts = React.memo((props: MyPostsContainerPropsType) => {
     )
 })
 
-// const maxLength100 = maxLengthCreator(100)
 
 let AddNewPostForm: React.FC<InjectedFormProps> = (props) => {
     return (<form
