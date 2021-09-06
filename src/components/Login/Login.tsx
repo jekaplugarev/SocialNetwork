@@ -1,6 +1,7 @@
 import React from 'react';
-import {InjectedFormProps, reduxForm, Field} from 'redux-form';
-import {Input} from '../common/FormsControl/FormsControls';
+import {InjectedFormProps, reduxForm} from 'redux-form';
+import {createField, Input} from '../common/FormsControl/FormsControls';
+
 import {required} from '../../utils/validators/validators';
 import {connect} from 'react-redux';
 import {AuthType, login} from '../../redux/auth-reducer';
@@ -12,10 +13,14 @@ type FormDataType = {
     email: string
     password: string
     rememberMe: boolean
+    captcha: string | null
+}
+type FormOwnDataType = {
+    captchaUrl: string | null
 }
 
 type MapDispatchToPropsType = {
-    login: (email: string, password: string, rememberMe: boolean) => void
+    login: (email: string, password: string, rememberMe: boolean, captchaUrl: string | null) => void
 }
 type MapStateToPropsType = {
     auth: AuthType
@@ -26,37 +31,20 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         auth: state.auth
     }
 }
-
 type LoginPropsType = MapDispatchToPropsType & MapStateToPropsType
 
-const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({error, handleSubmit}) => {
+const LoginForm: React.FC<InjectedFormProps<FormDataType, FormOwnDataType> & FormOwnDataType> = ({
+                                                                                                     error,
+                                                                                                     handleSubmit,
+                                                                                                     captchaUrl
+                                                                                                 }) => {
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <Field
-                    placeholder={'Email'}
-                    name={'email'}
-                    component={Input}
-                    type={'text'}
-                    validate={[required]}
-                />
-            </div>
-            <div>
-                <Field
-                    placeholder={'Password'}
-                    name={'password'}
-                    component={Input}
-                    type={'password'}
-                    validate={[required]}
-                />
-            </div>
-            <div>
-                <Field
-                    component={Input}
-                    name={'rememberMe'}
-                    type={'checkbox'}
-                />Remember me
-            </div>
+            {createField('Email', 'email', [required], Input)}
+            {createField('Password', 'password', [required], Input, {type: 'password'})}
+            {createField('RememberMe', 'rememberMe', [required], Input, {type: 'checkbox'}, 'Remember Me')}
+            {captchaUrl && <img src={captchaUrl} alt="Captcha" style={{width: '200px'}}/>}
+            {captchaUrl && createField('Symbols from image', 'captcha', [required], Input, {})}
             {error && <div className={style.formSummaryError}>
                 {error}
             </div>}
@@ -69,24 +57,25 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({error, handleSubm
     )
 }
 
-const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
+const LoginReduxForm = reduxForm<FormDataType, FormOwnDataType>({form: 'login'})(LoginForm)
 
-const Login = ({auth: {isAuth}, login}: LoginPropsType) => {
-
+const Login = (props: LoginPropsType) => {
     const onSubmit = (formData: FormDataType) => {
-        login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
-    if (isAuth) {
+    if (props.auth.isAuth) {
         return <Redirect to={'/profile'}/>
     }
 
     return (
         <div>
             <h2>Login</h2>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm
+                onSubmit={onSubmit}
+                captchaUrl={props.auth.captchaUrl}/>
         </div>
     )
 }
 
-export default connect(mapStateToProps, {login}) (Login)
+export default connect(mapStateToProps, {login})(Login)
