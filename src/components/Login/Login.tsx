@@ -79,3 +79,4 @@ const Login = (props: LoginPropsType) => {
 }
 
 export default connect(mapStateToProps, {login})(Login)
+

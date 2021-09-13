@@ -17,10 +17,10 @@ export const usersAPI = {
             .then(response => response.data)
     },
     follow(userId: number) {
-        return instance.post(`follow/${userId}`, {})
+        return instance.post<APIResponseType>(`follow/${userId}`).then(response => response.data)
     },
     unfollow(userId: number) {
-        return instance.delete(`follow/${userId}`)
+        return instance.delete<APIResponseType>(`follow/${userId}`).then(response => response.data)
     },
     getProfile(userId: number) {
         return profileAPI.getProfile(userId)
@@ -67,4 +67,13 @@ export const securityAPI = {
     getCaptcha() {
         return instance.get(`security/get-captcha-url`)
     }
+}
+
+/// Types
+
+export type APIResponseType = {
+    resultCode: number
+    messages: Array<string>
+    data: Object
+    fieldsErrors: Array<string>
 }
