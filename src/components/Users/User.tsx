@@ -58,14 +58,6 @@ export const User: React.FC<UserPropsType> = React.memo((props) => {
                     {user.status}
                 </div>
             </div>
-            {/*<div className={style.address}>*/}
-            {/*<div className={style.city}>*/}
-            {/*    {'u.location.city'}*/}
-            {/*</div>*/}
-            {/*<div className={style.country}>*/}
-            {/*    {'u.location.country'}*/}
-            {/*</div>*/}
-            {/*</div>*/}
         </div>
     </div>
 })

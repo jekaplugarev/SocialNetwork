@@ -12,7 +12,7 @@ export type AuthType = {
     email: string | null
     login: string | null
     isAuth: boolean
-    captchaUrl: string | null
+    captchaUrl: any
 }
 export type SetUserDataActionType = ReturnType<typeof setAuthUserData>
 export type GetCaptchaUrlSuccessActionType = ReturnType<typeof getCaptchaUrlSuccess>
