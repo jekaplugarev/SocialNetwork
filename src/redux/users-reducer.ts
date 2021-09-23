@@ -193,7 +193,6 @@ const followUnfollowFlow = async (dispatch: Dispatch<UsersActionType>, userId: n
 export const follow = (userId: number): ThunkType => {
     return async (dispatch: Dispatch<UsersActionType>) => {
         let apiMethod = usersAPI.follow.bind(usersAPI)
-
         await followUnfollowFlow(dispatch, userId, apiMethod, followSuccess)
     }
 }

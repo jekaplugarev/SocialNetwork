@@ -6,15 +6,15 @@ import {NavLink} from 'react-router-dom';
 
 type UserPropsType = {
     user: UsersType
-    follow: (userId: number) => void
-    unfollow: (userId: number) => void
+    followUser: (userId: number) => void
+    unfollowUser: (userId: number) => void
     followingInProgress: number[]
 }
 
 export const User: React.FC<UserPropsType> = React.memo((props) => {
     const {
-        unfollow,
-        follow,
+        followUser,
+        unfollowUser,
         followingInProgress,
         user
     } = props;
@@ -32,7 +32,7 @@ export const User: React.FC<UserPropsType> = React.memo((props) => {
                         className={style.userBtnUnfollow}
                         disabled={followingInProgress.some(id => id === user.id)}
                         onClick={() => {
-                            unfollow(user.id)
+                            unfollowUser(user.id)
                         }}
                     >
                         Unfollow
@@ -41,7 +41,7 @@ export const User: React.FC<UserPropsType> = React.memo((props) => {
                         className={style.userBtn}
                         disabled={followingInProgress.some(id => id === user.id)}
                         onClick={() => {
-                            follow(user.id)
+                            followUser(user.id)
                         }}
                     >
                         Follow
