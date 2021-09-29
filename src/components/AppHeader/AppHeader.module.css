@@ -32,24 +32,16 @@
 }
 
 .loginBlock {
-    display: flex;
-    margin-left: auto;
-    margin-right: 50px;
-    padding: 6px;
     color: white;
     font-size: 16px;
 }
 
-.loginBlock a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-}
+/*.loginBlock a {*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    font-size: 16px;*/
+/*}*/
 
-.logoutBtn {
-    margin-left: 10px;
-}
-
-/*.login {*/
-/*    position: absolute;*/
+/*.logoutBtn {*/
+/*    margin-left: 10px;*/
 /*}*/
