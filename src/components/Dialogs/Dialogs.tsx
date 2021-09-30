@@ -40,8 +40,6 @@ export const Dialogs: React.FC<DialogsContainerPropsType> = (props) => {
     )
 }
 
-// const maxLength100 = maxLengthCreator(100)
-
 const AddMessageForm: React.FC<InjectedFormProps> = (props) => {
     return (
         <form
