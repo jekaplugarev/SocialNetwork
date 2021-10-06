@@ -44,11 +44,11 @@ class App extends React.Component <AppTypeProps> {
             <Layout>
                 <AppHeader/>
                 <Content style={{padding: '0 50px'}}>
-                    <Breadcrumb style={{margin: '16px 0'}}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                        <Breadcrumb.Item>App</Breadcrumb.Item>
-                    </Breadcrumb>
+                    {/*<Breadcrumb style={{margin: '16px 0'}}>*/}
+                    {/*    <Breadcrumb.Item>Home</Breadcrumb.Item>*/}
+                    {/*    <Breadcrumb.Item>List</Breadcrumb.Item>*/}
+                    {/*    <Breadcrumb.Item>App</Breadcrumb.Item>*/}
+                    {/*</Breadcrumb>*/}
                     <Layout className="site-layout-background" style={{padding: '24px 0'}}>
                         <Sider className="site-layout-background" width={200}>
                             <Menu
@@ -60,9 +60,9 @@ class App extends React.Component <AppTypeProps> {
                                 <Menu.Item key="1" icon={<UserOutlined/>}>
                                     <Link to="/profile">Profile</Link>
                                 </Menu.Item>
-                                <Menu.Item key="2" icon={<MailOutlined/>}>
-                                    <Link to="/dialogs">Messages</Link>
-                                </Menu.Item>
+                                {/*<Menu.Item key="2" icon={<MailOutlined/>}>*/}
+                                {/*    <Link to="/dialogs">Messages</Link>*/}
+                                {/*</Menu.Item>*/}
                                 <Menu.Item key="3" icon={<LaptopOutlined/>}>
                                     <Link to="/users">Users</Link>
                                 </Menu.Item>
@@ -74,7 +74,7 @@ class App extends React.Component <AppTypeProps> {
                         <Content style={{padding: '0 24px', minHeight: 280}}>
                             <Switch>
                                 <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
-                                <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
+                                {/*<Route path="/dialogs" render={withSuspense(DialogsContainer)}/>*/}
                                 <Route path="/users" render={() => <UsersPage/>}/>
                                 <Route path="/news" render={() => <News/>}/>
                                 <Route path="/settings" render={() => <Settings/>}/>

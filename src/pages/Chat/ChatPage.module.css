@@ -1,0 +1,106 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 3fr 12fr;
+    color: #3b3b3b;
+    min-height: calc(100vh - 70px);
+}
+
+.dialogs a {
+    display: block;
+    color: #3b3b3b;
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px;
+}
+
+.dialogs a:hover {
+    background-color: rgba(200, 200, 200, 0.2);
+    border-radius: 5px;
+}
+
+.dialog a.active {
+    color: black;
+}
+
+.dialogsItems {
+    padding: 5px;
+    border-right: 3px solid rgba(233, 236, 241, 1);
+    min-width: 200px;
+}
+
+.dialogsItems a.active {
+    display: block;
+    color: #3b3b3b;
+    background-color: rgba(200, 200, 200, 0.2);
+    border-radius: 5px;
+}
+
+.messages {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.message {
+    margin: 10px;
+    background-color: rgba(0, 191, 255, 0.2);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 20px;
+}
+
+.enterMessage {
+    display: flex;
+}
+
+.messageField {
+    margin: 10px;
+    outline: none;
+    resize: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 10px;
+    display: flex;
+    width: calc(100% - 40px);
+    overflow: hidden;
+    border-color: #bebebe;
+}
+
+.messageBtn {
+    min-width: 120px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: deepskyblue;
+    outline: none;
+    border: 1px solid deepskyblue;
+    color: white;
+    border-radius: 5px;
+    align-self: start;
+}
+
+.messageBtn:hover {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid deepskyblue;
+    color: #3b3b3b;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.userName {
+    margin-left: 10px;
+}

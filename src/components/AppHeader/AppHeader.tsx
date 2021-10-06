@@ -27,10 +27,10 @@ export const AppHeader: React.FC = () => {
                             <Link to="/profile">Profile</Link>
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <Link to="/dialogs">Messages</Link>
+                            <Link to="/users">Users</Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            <Link to="/users">Users</Link>
+                            <Link to="/chat">Chat</Link>
                         </Menu.Item>
                     </Menu>
                 </Col>
